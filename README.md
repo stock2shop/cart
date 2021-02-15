@@ -5,10 +5,10 @@
 Web components to convert any web page into a shopping cart, which:-
 
  - Dynamically update price and qty for items. 
- - Add items to a cart and manage cart.
- - Authenticate and checkout.
+ - Allows adding items to a cart and managing the cart.
+ - Authenticate and checkout of customer.
  
-Authenticated customer may see price, qty, payment methods and shipping methods specific to them.
+Authenticated customers may see price, qty, payment methods and shipping methods specific to them.
 This functionality is usually associated with B2B e-commerce.
 
 Requirements for [SLC](https://herman.bearblog.dev/mvp-vs-slc/)
@@ -21,7 +21,7 @@ Requirements for [SLC](https://herman.bearblog.dev/mvp-vs-slc/)
 - Checkout process with the option for different types of confirmation
 - Authentication and user login
 
-## Audiences
+## Audience
 
 - Web developers with a basic understanding of HTML to quickly add e-commerce functionality to their site.
 - Javascript software engineers who wish to integrate into different applications or have greater flexibility to design custom carts.    
@@ -70,8 +70,8 @@ Results in:
 
 Some items have `options`.
 For example, a shoe may come in different sizes, each size having its own sku with its own size `option`.
-The shoe, consisting of multiple skus can then be displayed as one saleable product with a drop down to select the sku on size.
-Multiple options are possible, which would result in multiple dropdown menus.
+The shoe, consisting of multiple skus, can then be displayed as one saleable product with a drop down to select the sku on size.
+Multiple options are possible, which would result in multiple drop down menus.
 
 Here is an example setting variation with properties (note `skus` property and not `sku` is used)
 
@@ -83,10 +83,9 @@ Here is an example setting variation with properties (note `skus` property and n
     option-thickness="6mm|6mm|8mm"
      />
 ```
+`TODO: confirm various layouts for variants`
 
 The resulting HTML could look like below 
-
-`TODO: confirm various layouts for variants`
 
 ```html
 <span class="s2s-add">
