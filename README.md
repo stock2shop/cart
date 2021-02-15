@@ -2,9 +2,8 @@
 
 ## Overview
 
-Web components to convert any web page into a shopping cart.
+Web components to convert any web page into a shopping cart, which:-
 
-Web Components to:-
  - Dynamically update price and qty for items. 
  - Add items to a cart and manage cart.
  - Authenticate and checkout.
@@ -12,20 +11,20 @@ Web Components to:-
 Authenticated customer may see price, qty, payment methods and shipping methods specific to them.
 This functionality is usually associated with B2B e-commerce.
 
-The components are designed to be used by different audiences:-
-- Web developers with a basic understanding of HTML to quickly add e-commerce functionality to their site.
-- Javascript software engineers who wish to integrate into different applications or have greater flexibility to design custom carts.    
-
-
 Requirements for [SLC](https://herman.bearblog.dev/mvp-vs-slc/)
 
 - Able to add the cart to a web page by including a single `.js` file and adding HTML.
 - All components should be usable without requiring an external data source.
 - Global data `store` can be set in various ways (external API, Web component props and data web components).
 - Variation on products (products with options) must be supported.
-- Dynamic loading of price and qty on page load
+- Dynamic loading of price and qty
 - Checkout process with the option for different types of confirmation
-- Authentication and user login (no registration required) 
+- Authentication and user login
+
+## Audiences
+
+- Web developers with a basic understanding of HTML to quickly add e-commerce functionality to their site.
+- Javascript software engineers who wish to integrate into different applications or have greater flexibility to design custom carts.    
 
 ## Web Components
 
@@ -55,6 +54,8 @@ Results in:
 <a class="s2s-add" href="javascript:s2s.cart.add('abc', 1)">Add to Cart</a>
 ```
 
+Using a custom "add to cart" image.
+
 ```html
 <s2s-add sku="abc" layout="img|/some/image/path.png" />
 ```
@@ -69,7 +70,8 @@ Results in:
 
 Some items have `options`.
 For example, a shoe may come in different sizes, each size having its own sku with its own size `option`.
-The shoe, consisting of multiple skus can then be displayed as one saleable item with a drop down to select the sku on size.
+The shoe, consisting of multiple skus can then be displayed as one saleable product with a drop down to select the sku on size.
+Multiple options are possible, which would result in multiple dropdown menus.
 
 Here is an example setting variation with properties (note `skus` property and not `sku` is used)
 
@@ -83,7 +85,8 @@ Here is an example setting variation with properties (note `skus` property and n
 ```
 
 The resulting HTML could look like below 
-_TODO: confirm layouts for variants_
+
+`TODO: confirm various layouts for variants`
 
 ```html
 <span class="s2s-add">
@@ -120,7 +123,7 @@ Or in the case of variations:-
     qty="10|0|5" 
     option-size="s|m|l" />
 ```
-#### Marketing 
+#### Product Marketing 
 
 Properties used for display
 
@@ -133,15 +136,15 @@ Properties used for display
     />
 ```
 
-_TODO: define key value meta for display_
+`TODO: define key value meta for display`
 
 #### Input
 
-_TODO: define possible form fields that can be used to capture additional info at checkout._
+`TODO: define possible form fields that can be used to capture additional info at checkout.`
   
 ### CSV
 
-A component to define data in a csv format, rather than using properties
+A component to define data in a csv format, rather than using component properties or the API.
 
 All csv headers can be properties on `s2s-add`.
 Regardless of which component you use, data is saved to a global state `store` and not in the component.
@@ -192,15 +195,13 @@ Results in:
 
 if multiple sku's are given price can be displayed as a range.
 
-Example:-
 ```html
 <s2s-price 
-    sku="abc|xyz" 
+    skus="abc|xyz" 
     format="international" 
     currency="AUD" />
 ```
 Results in:
-
 
 ```html
 <span class="s2s-price">from AUD 1 201.00 to AUD 1 500.00</span>
@@ -219,7 +220,6 @@ Results in:
 <span class="qty">10</span>
 ```
 
-
 ### Cart
 
 ```html
@@ -228,7 +228,7 @@ Results in:
 Creates a link that when clicked opens a overlay (modal) cart which:-
 - Allows for qty adjustment on items
 - Allows for removing an item
-- Shows pictures or any other required item meta data
+- Shows pictures or any other required marketing meta data
 - Has checkout link
 
 ### Cart Checkout
@@ -261,15 +261,13 @@ Summary of cart total
 <s2s-customer />
 ```
 Login link for customer to authenticate.
-_TBC_
+
+`TODO: define authentication`
 
 
 ## JSON API Models 
 
 Web components can communicate with an external API.
-
-It should be possible to create a 3rd party API without heavy lifting.
-
 
 ### User Authenticate
 
